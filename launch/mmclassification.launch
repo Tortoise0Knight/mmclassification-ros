@@ -2,15 +2,15 @@
 	<!-- For find_object node use calling service -->
 	<!-- <arg name="image_topic" default="/to_mmdetector" /> -->
 	<!-- For find_object node use subscribing -->
-	<arg name="image_topic" default="/xtion/rgb/image_raw" />
+	<arg name="image_topic" default="/camera/rgb/image_raw" />
 
-	<arg name="pub_rate" default="1" />
+	<arg name="publish_rate" default="1" />
 	<arg name="is_service" default="false" />
 	<arg name="visualization" default="true" />
 
-	<node pkg= "mmclassification-ros" name="mmclassification" type="mmclassification.py"  output="screen"> 
+	<node pkg= "mmclassification_ros" name="mmclassification" type="mmclassification.py"  output="screen"> 
     	<remap from="~image" to="$(arg image_topic)"/>
-		<param name="~publish_rate" value="$(arg pub_rate)" />
+		<param name="~publish_rate" value="$(arg publish_rate)" />
 		<param name="~is_service" value="$(arg is_service)" />
 		<param name="~visualization" value="$(arg visualization)" />
 	</node>

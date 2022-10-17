@@ -1,3 +1,3 @@
 sensor_msgs/Image image
 ---
-string class
+vision_msgs/Classification2D results
