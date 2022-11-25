@@ -54,7 +54,7 @@ class Classifier:
 
     def __init__(self, model):
         self.image_pub = rospy.Publisher("~debug_image", Image, queue_size=1)
-        self.object_pub = rospy.Publisher("~objects", String, queue_size=1)
+        self.object_pub = rospy.Publisher("~objects", Classification2D, queue_size=1)
         # self.bridge = CvBridge()
         self.model = model
 
@@ -87,6 +87,7 @@ class Classifier:
                 continue
 
             if msg is not None:
+                rospy.loginfo('RECEIVED MESSAGE')
                 class_obj = Classification2D()
                 # try:
                 #     cv_image = self.bridge.imgmsg_to_cv2(msg, "bgr8")
