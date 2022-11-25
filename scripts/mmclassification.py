@@ -43,7 +43,7 @@ from mmcls.models import build_classifier
 import threading
 
 # Choose to use a config and initialize the detector
-CONFIG_NAME = 'configs/resnet/resnet50_8xb32_in1lk.py'
+CONFIG_NAME = 'configs/resnet/resnet50_8xb32_in1k.py'
 CONFIG_PATH = os.path.join(os.path.dirname(sys.path[0]),'mmclassification', CONFIG_NAME)
 
 # Setup a checkpoint file to load
@@ -170,4 +170,3 @@ def main(args):
 
 if __name__=='__main__':
     main(sys.argv)
-    
