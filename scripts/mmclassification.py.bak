@@ -43,11 +43,11 @@ from mmcls.models import build_classifier
 import threading
 
 # Choose to use a config and initialize the detector
-CONFIG_NAME = 'configs/resnet/resnet50_8xb32_in1lk.py'
-CONFIG_PATH = os.path.join(os.path.dirname(sys.path[0]),'mmclassification', CONFIG_NAME)
+CONFIG_NAME = 'finetuning_plant_600_6class.py'
+CONFIG_PATH = os.path.join(os.path.dirname(sys.path[0]),'scripts', CONFIG_NAME)
 
 # Setup a checkpoint file to load
-MODEL_NAME =  'resnet50_8xb32_in1k_20210831-ea4938fc.pth'
+MODEL_NAME =  'epoch_12.pth'
 MODEL_PATH = os.path.join(os.path.dirname(sys.path[0]),'scripts', MODEL_NAME)
 
 class Classifier:
@@ -157,7 +157,6 @@ class Classifier:
 
 
 def main(args):
-    rospy.loginfo('Init node successfully')
     rospy.init_node('mmclassification')
     model = init_model(CONFIG_PATH, MODEL_PATH, device='cuda:0')
     obj = Classifier(model)
@@ -170,4 +169,3 @@ def main(args):
 
 if __name__=='__main__':
     main(sys.argv)
-    
