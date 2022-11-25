@@ -54,7 +54,7 @@ class Classifier:
 
     def __init__(self, model):
         self.image_pub = rospy.Publisher("~debug_image", Image, queue_size=1)
-        self.object_pub = rospy.Publisher("~objects", string, queue_size=1)
+        self.object_pub = rospy.Publisher("~objects", String, queue_size=1)
         # self.bridge = CvBridge()
         self.model = model
 
