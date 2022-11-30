@@ -101,7 +101,15 @@ class Classifier:
                 # Use the inference_model to do inference
                 # NOTE: inference_model() is able to receive both str and ndarray
                 results = inference_model(self.model, image_np)
-
+                print('Detected: ' ,  results['pred_label'] , 'Prediction score: ', results['pred_score'] )
+                
+                # image_show = self.model.show_result(image_np, results, wait_time=0, show=False)
+                # image_show_cv2 = cv2.cvtColor(image_show, cv2.COLOR_RGB2BGR)
+                # cv2.imshow("Detection results", image_show)
+                # if cv2.waitKey(1) == 'q':
+                #     break
+                # self.model.show_result(image_np, results, wait_time=1, show=True)
+                # print('test1')
                 # convert inference results to ros message
                 class_obj.header = msg.header
                 class_obj.source_img = msg
@@ -128,7 +136,7 @@ class Classifier:
                     debug_image = self.model.show_result(
                                     image_np,
                                     results,
-                                    show=False,
+                                    show=True,
                                     wait_time=0,
                                     win_name='result')
                     # img = cv2.cvtColor(image_np, cv2.COLOR_BGR2RGB)
@@ -171,3 +179,4 @@ def main(args):
 
 if __name__=='__main__':
     main(sys.argv)
+    
